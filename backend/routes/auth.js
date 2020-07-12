@@ -2,7 +2,7 @@ var express=require("express");
 var router=express.Router();
 const {check,validationResult}=require("express-validator");
 
-const { signout ,signup}=require("../controllers/auth");
+const { signout ,signup,signin}=require("../controllers/auth");
 
 router.post("/signup",
 [
@@ -10,7 +10,15 @@ router.post("/signup",
     check("email","email is required").isEmail(),
     check("password","password should be at least 3 char").isLength({min:3})
 ],
-signup)
+signup);
+
+router.post("/signin",
+[
+    
+    check("email","email is required").isEmail(),
+    check("password","password filed is required").isLength({min:1})
+],
+signin);
 router.get("/signout",signout);
 
 module.exports=router;
