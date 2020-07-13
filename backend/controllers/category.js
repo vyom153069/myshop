@@ -23,3 +23,45 @@ exports.createCategory=(req,res)=>{
         res.json({category});
     })
 }
+
+exports.getCategory=(req,res)=>{
+    return res.json(req.category);
+}
+exports.getAllCategories=(req,res)=>{
+    Category.find().exec((err,items)=>{
+        if(err){
+            return res.status(400).json({
+                error:"No Categories found"
+            })
+        }
+        res.json(items);
+    })
+}
+
+exports.updateCategory=(req,res)=>{
+    const category=req.category;
+    category.name=req.body.name;
+
+    category.save((err,updatedCategory)=>{
+        if(err){
+            return res.status(400).json({
+                error:"Failed to update category"
+            })
+        }
+        res.json(updatedCategory);
+    })
+}
+
+exports.removeCategory=(req,res)=>{
+    const category=req.category;
+    category.remove((err,category)=>{
+        if(err){
+            return res.status(400).json({
+                error:"failed to delete this category"
+            })
+        }
+        res.json({
+            message:"Successfully deleted"
+        })
+    })
+}
