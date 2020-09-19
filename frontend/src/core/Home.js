@@ -137,9 +137,9 @@ const Home = () => {
 	};
 
 	return (
-		<Base title="Home Page" description="Welcome to the Tshirt Store">
+		<Base title="Home Page" description="Welcome to the Vyom's Store">
 			{createCart()}
-			<h1 className="text-white mx-auto mb-5">All T-Shirts</h1>
+			<h1 className="text-white mx-auto mb-5">All Products</h1>
 			<div className="container-fluid d-flex p-3 flex-column flex-md-row justify-content-md-center">
 				{filterSection()}
 				{productDisplay()}
